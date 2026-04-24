@@ -7,6 +7,7 @@ import SummerEffect from '@/components/effects/SummerEffect'
 import ThemeProvider from '@/components/providers/ThemeProvider'
 import CookieConsent from '@/components/ui/CookieConsent'
 import ScrollToTop from '@/components/ui/ScrollToTop'
+import ThemeScript from './theme-script'
 
 export const metadata: Metadata = {
   title: 'Шале-Тюлень - Премиум отдых в лесу с банями и купелями',
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="ru" suppressHydrationWarning>
       <body>
+        <ThemeScript />
         <ThemeProvider>
           <SummerEffect />
           <Header />
@@ -33,4 +35,3 @@ export default function RootLayout({
     </html>
   )
 }
-

@@ -1,4 +1,113 @@
-﻿@import 'tailwindcss';
+﻿/* ========== ПЛАВНЫЕ АНИМАЦИИ (оптимизированные) ========== */
+:root {
+  --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-medium: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Только нужные элементы имеют переходы */
+.house-card,
+.location-card,
+.promotion-card,
+.amenity-item,
+.btn-primary,
+.btn-secondary,
+.gallery-item {
+  transition: var(--transition-medium);
+}
+
+/* Для темы - только фон и цвет текста */
+body,
+header,
+.dark body,
+.dark header {
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+/* Карточки при ховере */
+.house-card:hover,
+.location-card:hover,
+.promotion-card:hover,
+.amenity-item:hover {
+  transform: translateY(-8px);
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+/* Плавное появление элементов */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* Галерея */
+.gallery-item img {
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Кнопки */
+.btn-primary,
+.btn-secondary {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Хедер при скролле */
+header {
+  transition: background-color var(--transition-fast), backdrop-filter var(--transition-fast);
+}
+
+/* Модальное окно */
+.gallery-modal {
+  transition: opacity 0.3s ease;
+}
+
+/* Скелетон загрузки */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.image-skeleton {
+  animation: shimmer 1.5s infinite;
+}
+
+
+/* Плавные переходы для всех элементов */
+
+
+/* Оптимизация анимаций для темной темы */
+@media (prefers-reduced-motion: reduce) {
+  
+}
+
+/* Предзагрузка темной темы */
+.dark {
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@import 'tailwindcss';
 
 /* ========== БАЗОВЫЕ СТИЛИ ========== */
 :root {
@@ -1327,3 +1436,5 @@ footer {
   50% { transform: translate(-2px, -1px) rotate(-2deg); }
   75% { transform: translate(1px, 2px) rotate(2deg); }
 }
+
+
