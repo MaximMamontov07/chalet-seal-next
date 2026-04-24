@@ -1,0 +1,477 @@
+﻿/* ============================================
+   🌙 НОЧНАЯ ТЕМА - ШАЛЕ-ТЮЛЕНЬ
+   ============================================ */
+
+body.dark,
+.dark body {
+  background-color: #1a1a1a !important;
+  color: #8b7355 !important;
+}
+
+/* Шапка */
+.dark header {
+  background-color: rgba(26, 26, 26, 0.98) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark header span {
+  color: #8b7355 !important;
+}
+
+/* Навигация */
+.dark .nav-menu a {
+  color: #8b7355 !important;
+}
+
+.dark .nav-menu a:hover {
+  color: #ffffff !important;
+}
+
+.dark .nav-menu a::after {
+  background: #8b7355 !important;
+}
+
+/* Заголовки секций */
+.dark .section-title {
+  color: #8b7355 !important;
+}
+
+.dark .section-title::after {
+  background-color: #8b7355 !important;
+}
+
+.dark .section-subtitle {
+  color: #aaa !important;
+}
+
+/* Карточки шале */
+.dark .houses-section {
+  background-color: #222 !important;
+}
+
+.dark .house-card {
+  background-color: #1a1a1a !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .house-card:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark .house-title {
+  color: #8b7355 !important;
+}
+
+.dark .house-card p {
+  color: #aaa !important;
+}
+
+.dark .house-features li span {
+  color: #aaa !important;
+}
+
+.dark .house-features svg {
+  color: #8b7355 !important;
+}
+
+.dark .house-price {
+  background-color: rgba(46, 80, 60, 0.2) !important;
+  color: #8b7355 !important;
+}
+
+/* Локации */
+.dark .location-card {
+  background-color: #1a1a1a !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .location-card p {
+  color: #aaa !important;
+}
+
+.dark .location-tag {
+  background-color: rgba(46, 80, 60, 0.3) !important;
+  color: #8b7355 !important;
+}
+
+.dark .btn-secondary {
+  border-color: #8b7355 !important;
+  color: #8b7355 !important;
+}
+
+.dark .btn-secondary:hover {
+  background-color: #8b7355 !important;
+  color: #1a1a1a !important;
+}
+
+/* Акции */
+.dark .promotions-section {
+  background-color: #2a2a2a !important;
+}
+
+.dark .promotion-card {
+  background-color: #1a1a1a !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .promotion-content p {
+  color: #aaa !important;
+}
+
+.dark .promo-price {
+  color: #8b7355 !important;
+}
+
+/* Удобства */
+.dark .amenities-section {
+  background-color: #222 !important;
+}
+
+.dark .amenity-item {
+  background-color: #1a1a1a !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .amenity-title {
+  color: #8b7355 !important;
+}
+
+.dark .amenity-item p {
+  color: #aaa !important;
+}
+
+.dark .amenity-item > div:first-child {
+  background-color: rgba(46, 80, 60, 0.2) !important;
+}
+
+.dark .amenity-item > div:first-child svg {
+  color: #8b7355 !important;
+}
+
+/* Галерея */
+.dark .gallery-section {
+  background-color: #222 !important;
+}
+
+/* Бронирование */
+.dark .booking-section {
+  background: linear-gradient(135deg, #2e503c 0%, #1a3023 100%) !important;
+  color: #fff !important;
+}
+
+.dark .booking-btn-white {
+  color: #2e503c !important;
+}
+
+.dark .booking-btn-white:hover {
+  color: #fff !important;
+}
+
+.dark .booking-btn-outline {
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+.dark .booking-btn-outline:hover {
+  background-color: #fff !important;
+  color: #2e503c !important;
+}
+
+/* Футер */
+.dark footer {
+  background-color: #1a1a1a !important;
+}
+
+.dark footer a {
+  color: #8b7355 !important;
+}
+
+.dark footer a:hover {
+  color: #fff !important;
+}
+
+.dark .footer-contact a {
+  color: #fff !important;
+}
+
+.dark .footer-contact a:hover {
+  color: #8b7355 !important;
+}
+
+/* Страницы */
+.dark .page-container {
+  background-color: #1a1a1a !important;
+}
+
+.dark .page-content {
+  background-color: #1a1a1a !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .page-content h2,
+.dark .page-content h3 {
+  color: #8b7355 !important;
+}
+
+.dark .page-content p {
+  color: #aaa !important;
+}
+
+/* FAQ */
+.dark .faq-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .faq-question span {
+  color: #8b7355 !important;
+}
+
+.dark .faq-answer p {
+  color: #aaa !important;
+}
+
+/* Отзывы */
+.dark .review-item {
+  background-color: rgba(46, 80, 60, 0.2) !important;
+}
+
+.dark .review-author {
+  color: #8b7355 !important;
+}
+
+.dark .review-item p {
+  color: #aaa !important;
+}
+
+/* Контакты и транспорт */
+.dark .contact-card,
+.dark .transport-card {
+  background-color: rgba(46, 80, 60, 0.2) !important;
+}
+
+.dark .contact-card h3,
+.dark .transport-card h3 {
+  color: #8b7355 !important;
+}
+
+.dark .contact-card a,
+.dark .contact-item a {
+  color: #8b7355 !important;
+}
+
+.dark .contact-card a:hover {
+  color: #fff !important;
+}
+
+.dark .transport-card p,
+.dark .contact-card p {
+  color: #aaa !important;
+}
+
+/* Кнопка 2GIS - фикс белого фона */
+.dark .map-link-container {
+  background-color: rgba(46, 80, 60, 0.2) !important;
+}
+
+.dark .map-link-container .btn-primary {
+  background-color: #2e503c !important;
+  color: #fff !important;
+}
+
+.dark a[href*="2gis"] {
+  background-color: #2e503c !important;
+  color: #fff !important;
+}
+
+/* Тема тогл */
+.dark .theme-toggle {
+  color: #8b7355 !important;
+  border-color: #8b7355 !important;
+}
+
+.dark .theme-toggle:hover {
+  background-color: #1a3023 !important;
+}
+
+.dark .mobile-menu-btn {
+  color: #8b7355 !important;
+}
+
+/* Мобильное меню */
+.dark .nav-menu.open {
+  background-color: #1a1a1a !important;
+}
+
+/* Скролл */
+.dark .scroll-to-top {
+  background-color: #8b7355 !important;
+  color: #1a1a1a !important;
+}
+
+.dark .scroll-to-top:hover {
+  background-color: #a38b6d !important;
+}
+
+/* Кнопки */
+.dark .btn-primary {
+  background-color: #2e503c !important;
+  color: #fff !important;
+}
+
+.dark .btn-primary:hover {
+  background-color: #1a3023 !important;
+}
+
+/* Все заголовки */
+.dark h1, .dark h2, .dark h3, .dark h4 {
+  color: #8b7355 !important;
+}
+
+/* Весь текст */
+.dark p, .dark span, .dark li {
+  color: #aaa !important;
+}
+
+/* Исключения - белый текст */
+.dark .hero-content h1,
+.dark .hero-content p,
+.dark .booking-section h2,
+.dark .booking-section p,
+.dark .location-overlay h3,
+.dark footer h3,
+.dark footer p,
+.dark footer span,
+.dark .promotion-header,
+.dark .promotion-header h3,
+.dark .promotion-badge,
+.dark .btn-primary,
+.dark .social-link {
+  color: #fff !important;
+}
+
+/* Соцсети в футере */
+.dark .social-link {
+  color: #fff !important;
+}
+/* Фикс белого фона для блока с картой 2GIS в темной теме */
+.dark [style*="background: var(--light-green)"],
+.dark div[style*="--light-green"],
+.dark .map-link-container,
+.dark div[style*="light-green"] {
+  background-color: rgba(46, 80, 60, 0.2) !important;
+}
+
+/* Фикс кнопки 2GIS */
+.dark .map-link-container a,
+.dark .map-link-container .btn-primary,
+.dark [style*="light-green"] .btn-primary,
+.dark [style*="light-green"] a.btn-primary {
+  background-color: #2e503c !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.dark .map-link-container a:hover,
+.dark [style*="light-green"] .btn-primary:hover {
+  background-color: #1a3023 !important;
+  color: #ffffff !important;
+}
+
+/* Самый сильный селектор для переопределения */
+.dark div[style*="background: var(--light-green)"] {
+  background: rgba(46, 80, 60, 0.2) !important;
+}
+
+.dark div[style*="background: var(--light-green)"] a {
+  background-color: #2e503c !important;
+  color: #fff !important;
+}
+
+/* Календарь в темной теме */
+.dark #calendar .amenities-section {
+  background-color: #222 !important;
+}
+
+.dark #calendar > div > div:first-child {
+  background-color: #1a1a1a !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Темная тема календаря */
+.dark #calendar {
+  background-color: #1a1a1a !important;
+}
+
+.dark .calendar-wrapper {
+  background-color: #1a1a1a !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark .calendar-month-title {
+  color: #8b7355 !important;
+}
+
+.dark .calendar-weekday {
+  color: #8b7355 !important;
+}
+
+.dark .calendar-nav-btn {
+  border-color: #8b7355 !important;
+  color: #8b7355 !important;
+}
+
+.dark .calendar-nav-btn:hover {
+  background: #8b7355 !important;
+  color: #1a1a1a !important;
+}
+
+.dark .calendar-day.free {
+  background: #2e503c !important;
+  border-color: #1a3023 !important;
+  box-shadow: 0 2px 8px rgba(46, 80, 60, 0.3) !important;
+}
+
+.dark .calendar-day.free:hover {
+  background: #3a7d5f !important;
+  box-shadow: 0 4px 15px rgba(46, 80, 60, 0.5) !important;
+}
+
+.dark .calendar-day.booked {
+  background: #5c2828 !important;
+  border-color: #3d1a1a !important;
+}
+
+.dark .calendar-day.past {
+  background: #2a2a2a !important;
+  border-color: #1f1f1f !important;
+  opacity: 0.3 !important;
+  color: #666 !important;
+}
+
+.dark .calendar-day.selected {
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6) !important;
+}
+
+.dark .selected-info {
+  background: rgba(46, 80, 60, 0.2) !important;
+  color: #8b7355 !important;
+}
+
+.dark .selected-info strong {
+  color: #8b7355 !important;
+}
+
+.dark .selected-info span {
+  color: #aaa !important;
+}
+
+.dark .legend-free {
+  background: #2e503c !important;
+  border-color: #1a3023 !important;
+}
+
+.dark .legend-booked {
+  background: #5c2828 !important;
+  border-color: #3d1a1a !important;
+}

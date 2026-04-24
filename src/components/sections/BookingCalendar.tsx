@@ -1,0 +1,128 @@
+﻿'use client'
+import { useState, useEffect } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+
+interface BookingData { [date: string]: { status: 'free' | 'booked', name?: string, phone?: string } }
+
+const BOOKINGS_KEY = 'chalet-bookings'
+
+const calendarCSS = `
+.calendar-nav-btn{background:none;border:2px solid var(--forest-green);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--forest-green);transition:all .3s}
+.calendar-nav-btn:hover{background:var(--forest-green);color:#fff}
+.calendar-month-title{font-size:clamp(18px,3vw,26px);font-weight:700;color:var(--forest-green)}
+.calendar-weekday{text-align:center;font-weight:600;font-size:14px;color:var(--forest-green);padding:10px 0}
+.calendar-day{aspect-ratio:1;border-radius:12px;display:flex;align-items:center;justify-content:center;transition:all .2s;cursor:pointer;user-select:none;font-weight:700;font-size:clamp(15px,2.5vw,20px);position:relative;overflow:hidden}
+.calendar-day.free{background:#e8f5e9;color:#2e7d32;border:2px solid #a5d6a7}
+.calendar-day.free:hover{background:#4caf50;color:#fff;transform:scale(1.08);box-shadow:0 4px 15px rgba(76,175,80,.4)}
+.calendar-day.booked{background:#ffebee;color:#c62828;border:2px solid #ef9a9a}
+.calendar-day.past{background:#f5f5f5;color:#bdbdbd;border:2px solid #e0e0e0;cursor:default;opacity:.5}
+.calendar-day.past:hover{transform:none!important;box-shadow:none!important}
+.calendar-day.selected{transform:scale(1.12)!important;box-shadow:0 6px 20px rgba(0,0,0,.25)!important;z-index:2}
+.seal-icon{position:absolute;font-size:clamp(38px,5vw,55px);opacity:0.8;animation:swim 3s ease-in-out infinite;pointer-events:none}
+.day-number{z-index:1}
+.day-number-booked{z-index:1;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.3);font-size:clamp(16px,2.5vw,22px)}
+@keyframes swim{0%,100%{transform:translate(0,0) rotate(0deg)}25%{transform:translate(2px,-3px) rotate(3deg)}50%{transform:translate(-2px,-1px) rotate(-2deg)}75%{transform:translate(1px,2px) rotate(2deg)}}
+`
+
+export default function BookingCalendar() {
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth())
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
+  const [bookings, setBookings] = useState<BookingData>({})
+  const [loading, setLoading] = useState(true)
+  const [selectedDate, setSelectedDate] = useState<string | null>(null)
+  const [today, setToday] = useState('')
+
+  useEffect(() => { 
+    loadBookings()
+    const now = new Date()
+    setToday(now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0'))
+  }, [])
+
+  const loadBookings = () => {
+    const saved = localStorage.getItem(BOOKINGS_KEY)
+    if (saved) setBookings(JSON.parse(saved))
+    setLoading(false)
+  }
+
+  const months = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь']
+  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate()
+  const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay()
+  const adjustedFirstDay = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1
+
+  const getDateStatus = (day: number) => {
+    const d = currentYear + '-' + String(currentMonth+1).padStart(2,'0') + '-' + String(day).padStart(2,'0')
+    return bookings[d]?.status || 'free'
+  }
+
+  const getDateInfo = (day: number) => {
+    const d = currentYear + '-' + String(currentMonth+1).padStart(2,'0') + '-' + String(day).padStart(2,'0')
+    return bookings[d]
+  }
+
+  const isPastDate = (day: number) => {
+    const dateStr = currentYear + '-' + String(currentMonth+1).padStart(2,'0') + '-' + String(day).padStart(2,'0')
+    return dateStr < today
+  }
+
+  if (loading) return <section id="calendar" style={{padding:'60px 0',backgroundColor:'var(--gray)'}}><div className="container" style={{textAlign:'center'}}><p>Загрузка...</p></div></section>
+
+  return (
+    <section id="calendar" style={{padding:'60px 0',backgroundColor:'var(--gray)'}}>
+      <style dangerouslySetInnerHTML={{__html: calendarCSS}} />
+      <div className="container">
+        <div className="section-header">
+          <h2 className="section-title">Календарь бронирования</h2>
+          <p className="section-subtitle">Проверьте свободные даты</p>
+        </div>
+        <div style={{maxWidth:900,margin:'0 auto',background:'var(--)',borderRadius:'var(--radius)',boxShadow:'var(--shadow)',padding:30}}>
+          <div style={{display:'flex',justifyContent:'center',gap:40,marginBottom:25}}>
+            <div style={{display:'flex',alignItems:'center',gap:10}}><div style={{width:24,height:24,background:'#e8f5e9',borderRadius:6,border:'2px solid #a5d6a7'}}/><span style={{fontSize:14}}>Свободно</span></div>
+            <div style={{display:'flex',alignItems:'center',gap:10}}><div style={{width:24,height:24,background:'#ffebee',borderRadius:6,border:'2px solid #ef9a9a',display:'flex',alignItems:'center',justifyContent:'center',fontSize:14}}><img src='/img/your-logo.png' className='seal-logo' alt='logo' /></div><span style={{fontSize:14}}>Занято</span></div>
+            <div style={{display:'flex',alignItems:'center',gap:10}}><div style={{width:24,height:24,background:'#f5f5f5',borderRadius:6,border:'2px solid #e0e0e0'}}/><span style={{fontSize:14}}>Прошло</span></div>
+          </div>
+
+          <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:20}}>
+            <button onClick={()=>{if(currentMonth===0){setCurrentMonth(11);setCurrentYear(currentYear-1)}else{setCurrentMonth(currentMonth-1)}}} className="calendar-nav-btn"><FontAwesomeIcon icon={faChevronLeft} size="lg"/></button>
+            <h3 className="calendar-month-title">{months[currentMonth]} {currentYear}</h3>
+            <button onClick={()=>{if(currentMonth===11){setCurrentMonth(0);setCurrentYear(currentYear+1)}else{setCurrentMonth(currentMonth+1)}}} className="calendar-nav-btn"><FontAwesomeIcon icon={faChevronRight} size="lg"/></button>
+          </div>
+
+          <div style={{display:'grid',gridTemplateColumns:'repeat(7,1fr)',gap:5,marginBottom:8}}>
+            {['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map((d,i)=><div key={i} className="calendar-weekday">{d}</div>)}
+          </div>
+
+          <div style={{display:'grid',gridTemplateColumns:'repeat(7,1fr)',gap:6}}>
+            {Array.from({length:adjustedFirstDay}).map((_,i)=><div key={'e'+i} style={{aspectRatio:'1'}}/>)}
+            {Array.from({length:daysInMonth}).map((_,i)=>{
+              const day=i+1, status=getDateStatus(day), isPast=isPastDate(day)
+              const ds=currentYear+'-'+String(currentMonth+1).padStart(2,'0')+'-'+String(day).padStart(2,'0')
+              const isSel=selectedDate===ds
+              let cls='calendar-day'
+              if(isPast) cls+=' past'
+              else if(status==='booked') cls+=' booked'
+              else cls+=' free'
+              if(isSel) cls+=' selected'
+
+              return (
+                <div key={day} className={cls} onClick={()=>!isPast&&setSelectedDate(isSel?null:ds)}>
+                  {status==='booked' && !isPast ? (
+                    <>
+                      <span className="seal-icon"><img src='/img/your-logo.png' className='seal-logo' alt='logo' /></span>
+                      <span className="day-number-booked">{day}</span>
+                    </>
+                  ) : (
+                    <span className="day-number">{day}</span>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+
+          {selectedDate&&<div style={{marginTop:25,padding:18,background:'var(--light-green)',borderRadius:'var(--radius)',textAlign:'center'}}><strong>{selectedDate}</strong>{getDateInfo(parseInt(selectedDate.split('-')[2]))?.status==='booked'?<span style={{color:'#c62828'}}> — Занято <img src='/img/your-logo.png' className='seal-logo' alt='logo' /></span>:<span style={{color:'#2e7d32'}}> — Свободно ✅</span>}</div>}
+        </div>
+      </div>
+    </section>
+  )
+}
+
